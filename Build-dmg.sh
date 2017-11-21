@@ -24,6 +24,9 @@ cp -a jfontmaps ${BIBUNSHOAPP}/Contents/Resources/
 ## replace icns file to ad-hoc our icon :D
 cp -a artwork/bibunsho7.icns ${BIBUNSHOAPP}/Contents/Resources/applet.icns
 
+## copy some documents
+cp -a README.txt ${BIBUNSHOTEMP}/bibunsho7/
+
 ## make dmg
 hdiutil_encopts="-format UDZO -imagekey zlib-level=9"
 # hdiutil_encopts="-format ULFO"  ##<= macOS 10.11+
