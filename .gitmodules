@@ -1,0 +1,3 @@
+[submodule "jfontmaps"]
+	path = jfontmaps
+	url = git@github.com:texjporg/jfontmaps.git
