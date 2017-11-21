@@ -48,8 +48,8 @@ cp -a jfontmaps ${BIBUNSHOAPP}/Contents/Resources/
 ## replace icns file to ad-hoc our icon :D
 cp -a artwork/bibunsho7.icns ${BIBUNSHOAPP}/Contents/Resources/applet.icns
 
-## copy some documents
-cp -a README.txt ${BIBUNSHOTEMP}/bibunsho7/
+## copy some documents as plain text files
+cp -a README.md ${BIBUNSHOTEMP}/bibunsho7/README.txt
 
 ## make dmg
 hdiutil_encopts="-format UDZO -imagekey zlib-level=9"
