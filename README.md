@@ -18,3 +18,8 @@ TeX Live 2016をデフォルト（`/Applications/TeXLive/Library/texlive`）で�
  1. 展開したdmgのフォルダ内にある `Bibunsho7-patch.app` を実行します。
 
 Happy TeXing!
+
+## 同書籍のサポートページ
+
+ * [奥村晴彦先生](http://okumuralab.org/bibun7/)
+ * [技術評論社](http://gihyo.jp/book/2017/978-4-7741-8705-1/support)
