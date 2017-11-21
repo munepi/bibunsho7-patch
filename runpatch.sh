@@ -23,10 +23,9 @@ realpath() {
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 RESDIR=$(dirname $(realpath $0))
 
-if [ `${RESDIR}/Patch.sh` ]; then
-    osascript -e "display dialog \"パッチ完了\""
-else
-    osascript -e "display dialog \"$(${RESDIR}/Patch.sh 2>&1)\""
-fi
+${RESDIR}/Patch.sh 2>&1 | tee /tmp/bibunsho7-patch.log
+
+#osascript -e "set logText to do shell script \"cat /tmp/bibunsho7-patch.log\"" -e "display dialog logText"
+osascript -e "set logText to do shell script \"tail -n 1 /tmp/bibunsho7-patch.log\"" -e "display dialog logText"
 
 exit

@@ -176,5 +176,6 @@ updmap-sys
 
 ## TODO: remove mpost, upmpost from texmf.cnf in TLROOT
 
+echo Finished
 exit
 ## end of file
