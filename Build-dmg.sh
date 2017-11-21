@@ -24,9 +24,9 @@
 
 set -e
 
-PKGVERSION=${PKGVERSION:-git$(git rev-list HEAD -n 1 | cut -c 1-7)] # 1.0
+PKGVERSION=${PKGVERSION:-git$(git rev-list HEAD -n 1 | cut -c 1-7)} # 1.0
 
-BIBUNSHOTEMP=${BIBUNSHOTEMP:-/tmp/bibunsho7.temp.d}
+BIBUNSHOTEMP=${BIBUNSHOTEMP:-/tmp/bibunsho7-patch.temp.d}
 BIBUNSHOAPP=${BIBUNSHOTEMP}/bibunsho7/Patch.app
 BIBUNSHOPKG=Bibunsho7-patch-${PKGVERSION}-$(date +%Y%m%d)
 
