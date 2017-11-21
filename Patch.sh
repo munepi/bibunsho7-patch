@@ -80,7 +80,7 @@ which kpsewhich 2>&1 >/dev/null
 ##  - ptex-fontmaps/hiragino{,-pron} (for legacy Mac OS X)
 ##  - ptex-fontmaps/hiragino-elcapitan{,-pron}
 mkdir -p $(kpsewhich -var-value=TEXMFLOCAL)/fonts/map/dvipdfmx/ptex-fontmaps/
-cp -a ${TLRESDIR}/jfontmaps/maps/hiragino-* \
+cp -a ${TLRESDIR}/jfontmaps/maps/hiragino* \
    $(kpsewhich -var-value=TEXMFLOCAL)/fonts/map/dvipdfmx/ptex-fontmaps/
 
 ## modified/imported a part of lnsysfnt.sh
