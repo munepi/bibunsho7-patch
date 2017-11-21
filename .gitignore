@@ -1,0 +1,22 @@
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+/tmp/*
+*~
+*.bak*
+*.sha1sum
+
+test/hiraprop.tar.xz
+test/install-tl-unx.tar.gz
+
+extras/
