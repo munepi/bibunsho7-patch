@@ -24,9 +24,11 @@
 
 set -e
 
+PKGVERSION=${PKGVERSION:-git$(git rev-list HEAD -n 1 | cut -c 1-7)] # 1.0
+
 BIBUNSHOTEMP=${BIBUNSHOTEMP:-/tmp/bibunsho7.temp.d}
 BIBUNSHOAPP=${BIBUNSHOTEMP}/bibunsho7/Patch.app
-BIBUNSHOPKG=Bibunsho7-patch-$(date +%Y%m%d)
+BIBUNSHOPKG=Bibunsho7-patch-${PKGVERSION}-$(date +%Y%m%d)
 
 ## cleanup
 rm -rf ${BIBUNSHOTEMP}
@@ -56,6 +58,7 @@ hdiutil create -ov -srcfolder ${BIBUNSHOTEMP}/bibunsho7 \
         -fs HFS+ ${hdiutil_encopts} \
         -volname "Bibunsho7-patch" ${BIBUNSHOPKG}.dmg
 shasum ${BIBUNSHOPKG}.dmg >${BIBUNSHOPKG}.dmg.sha1sum
+shasum -a 256 ${BIBUNSHOPKG}.dmg >${BIBUNSHOPKG}.dmg.sha256sum
 echo $(basename $0): built ${BIBUNSHOPKG}.dmg
 
 exit
