@@ -25,8 +25,8 @@ RESDIR=$(dirname $(realpath $0))
 
 ${RESDIR}/Patch.sh 2>&1 | tee /tmp/bibunsho7-patch.log
 
-#osascript -e "set logText to do shell script \"cat /tmp/bibunsho7-patch.log\"" -e "display dialog logText"
-osascript -e "set logText to do shell script \"tail -n 1 /tmp/bibunsho7-patch.log\"" \
-          -e "display dialog logText buttons {\"OK\"} default button \"OK\" with title \"Patch.app\""
+# #osascript -e "set logText to do shell script \"cat /tmp/bibunsho7-patch.log\"" -e "display dialog logText"
+# osascript -e "set logText to do shell script \"tail -n 1 /tmp/bibunsho7-patch.log\"" \
+#           -e "display dialog logText buttons {\"OK\"} default button \"OK\" with title \"Patch.app\""
 
 exit
