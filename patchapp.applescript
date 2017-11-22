@@ -1,9 +1,9 @@
 #!/usr/bin/osacompile -o Patch.app
 
-set n to 150 -- 132 lines
+set n to 150 -- 139 lines
 set progress total steps to n
 set progress description to "Patch.app: 実行中..."
-set progress additional description to "Preparing to process"
+set progress additional description to "待機中..."
 
 set patchLog to "/tmp/bibunsho7-patch.log"
 
@@ -20,25 +20,26 @@ try
         set progress additional description to progrMsg
         set i to do shell script "wc -l" & space & patchLog & space & "| sed \"s, *,,\" | cut -f1 -d \" \""
 
-        --
+        set progress completed steps to i
+
+        -- 
         if progrMsg = "+ exit" then
-            set i to n
+            exit repeat
         else if progrMsg = "+ exit 1" then
             error number -128
         end if
-        
-        set progress completed steps to i
     end repeat
-    quit
-    return
-on error
+    -- quit
+    set progress completed steps to n
+    set progress additional description to "完了"
     activate
-    display alert "失敗"
+    display alert "完了"
     return
-end try
 
-on quit
+on error
+    set progrMsg to do shell script "tail -n 2" & space & patchLog
+    set progress additional description to progrMsg
+
     activate
-    display dialog "完了"
-    continue quit -- allows the script to quit
-end quit
+    display alert "失敗：ログファイル" & space & patchLog & space & "をご確認ください。"
+end try
