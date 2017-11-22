@@ -69,23 +69,9 @@ fi
 export PATH=${TLPATH}:${PATH}
 
 ## check some binaries and system-wide TEXMF trees
-which kpsewhich
-if [ $? -eq 1 ]; then
-    echo E: not found: kpsewhich
-    exit 1
-fi
-
-which mktexlsr
-if [ $? -eq 1 ]; then
-    echo E: not found: mktexlsr
-    exit 1
-fi
-
-which updmap-sys
-if [ $? -eq 1 ]; then
-    echo E: not found: updmap-sys
-    exit 1
-fi
+which kpsewhich || exit 1
+which mktexlsr || exit 1
+which updmap-sys || exit 1
 
 if [ ! -d $(kpsewhich -var-value=TEXMFLOCAL) ]; then
     echo E: no such directory: TEXMFLOCAL: $(kpsewhich -var-value=TEXMFLOCAL)
