@@ -35,11 +35,7 @@ rm -rf ${BIBUNSHOTEMP}
 mkdir -p ${BIBUNSHOTEMP}/bibunsho7
 
 ## make Patch.app
-osacompile -o ${BIBUNSHOAPP} <<__APPLESCRIPT__
-try
-    do shell script quoted form of (POSIX path of (path to resource "runpatch.sh")) with administrator privileges
-end try
-__APPLESCRIPT__
+osacompile -o ${BIBUNSHOAPP} patchapp.applescript
 
 cp -a runpatch.sh ${BIBUNSHOAPP}/Contents/Resources/
 cp -a Patch.sh ${BIBUNSHOAPP}/Contents/Resources/
