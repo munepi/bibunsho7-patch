@@ -1,11 +1,11 @@
 #!/usr/bin/make
 
-PKGVERSION=$(shell git rev-list HEAD -n 1 | cut -c 1-7) # 1.0
+VERSION=$(shell git rev-list HEAD -n 1 | cut -c 1-7)
 
 BIBUNSHOTEMP=/tmp/bibunsho7-patch.temp.d
 BIBUNSHOROOT=${BIBUNSHOTEMP}/bibunsho7
 BIBUNSHOAPP=${BIBUNSHOROOT}/Patch.app
-BIBUNSHOPKG=Bibunsho7-patch-${PKGVERSION}-$(shell date +%Y%m%d)
+BIBUNSHOPKG=Bibunsho7-patch-${VERSION}-$(shell date +%Y%m%d)
 
 hdiutil_encopts=-format UDZO -imagekey zlib-level=9
 # hdiutil_encopts=-format ULFO
