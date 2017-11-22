@@ -37,7 +37,6 @@ mkdir -p ${BIBUNSHOTEMP}/bibunsho7
 ## make Patch.app
 osacompile -o ${BIBUNSHOAPP} patchapp.applescript
 
-cp -a runpatch.sh ${BIBUNSHOAPP}/Contents/Resources/
 cp -a Patch.sh ${BIBUNSHOAPP}/Contents/Resources/
 cp -a jfontmaps ${BIBUNSHOAPP}/Contents/Resources/
 
