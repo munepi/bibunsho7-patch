@@ -88,15 +88,15 @@ if [ $? -eq 1 ]; then
 fi
 
 if [ ! -d $(kpsewhich -var-value=TEXMFLOCAL) ]; then
-    echo E: no such TEXMFLOCAL: $(kpsewhich -var-value=TEXMFLOCAL)
+    echo E: no such directory: TEXMFLOCAL: $(kpsewhich -var-value=TEXMFLOCAL)
     exit 1
 fi
 if [ ! -d $(kpsewhich -var-value=TEXMFSYSCONFIG) ]; then
-    echo E: no such TEXMFSYSCONFIG: $(kpsewhich -var-value=TEXMFSYSCONFIG)
+    echo E: no such directory: TEXMFSYSCONFIG: $(kpsewhich -var-value=TEXMFSYSCONFIG)
     exit 1
 fi
 if [ ! -d $(kpsewhich -var-value=TEXMFSYSVAR) ]; then
-    echo E: no such TEXMFSYSVAR: $(kpsewhich -var-value=TEXMFSYSVAR)
+    echo E: no such directory: TEXMFSYSVAR: $(kpsewhich -var-value=TEXMFSYSVAR)
     exit 1
 fi
 
