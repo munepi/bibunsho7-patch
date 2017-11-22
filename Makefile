@@ -2,7 +2,7 @@
 
 VERSION=git$(shell git rev-list HEAD -n 1 | cut -c 1-7)
 
-BIBUNSHOTEMP=/tmp/bibunsho7-patch.temp.d
+BIBUNSHOTEMP=$(shell pwd)/Work
 BIBUNSHOROOT=${BIBUNSHOTEMP}/bibunsho7
 BIBUNSHOAPP=${BIBUNSHOROOT}/Patch.app
 BIBUNSHOPKG=Bibunsho7-patch-${VERSION}-$(shell date +%Y%m%d)
