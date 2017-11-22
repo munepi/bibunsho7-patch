@@ -41,6 +41,7 @@ dmg: ${BIBUNSHOAPP}
 	shasum -a 256 ${BIBUNSHOPKG}.dmg >${BIBUNSHOPKG}.dmg.sha256sum
 
 clean:
+	rm -f *~
 	rm -rf ${BIBUNSHOTEMP}
 
 ## end of file
