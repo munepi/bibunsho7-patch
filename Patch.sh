@@ -22,6 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 # SOFTWARE.
 
+set -x
 set -e
 
 ##
@@ -63,13 +64,42 @@ if [ -z "${TLPATH}" ]; then
         TLPATH=/Applications/TeXLive/Library/texlive/2016/bin/x86_64-darwin
     elif [ -x /usr/local/texlive/2016/bin/x86_64-darwin/kpsewhich ]; then
         TLPATH=/usr/local/texlive/2016/bin/x86_64-darwin
-    else
-        echo E: not found: kpsewhich
-        exit 1
     fi
 fi
 export PATH=${TLPATH}:${PATH}
-which kpsewhich 2>&1 >/dev/null
+
+## check some binaries and system-wide TEXMF trees
+which kpsewhich
+if [ $? -eq 1 ]; then
+    echo E: not found: kpsewhich
+    exit 1
+fi
+
+which mktexlsr
+if [ $? -eq 1 ]; then
+    echo E: not found: mktexlsr
+    exit 1
+fi
+
+which updmap-sys
+if [ $? -eq 1 ]; then
+    echo E: not found: updmap-sys
+    exit 1
+fi
+
+if [ ! -d $(kpsewhich -var-value=TEXMFLOCAL) ]; then
+    echo E: no such TEXMFLOCAL: $(kpsewhich -var-value=TEXMFLOCAL)
+    exit 1
+fi
+if [ ! -d $(kpsewhich -var-value=TEXMFSYSCONFIG) ]; then
+    echo E: no such TEXMFSYSCONFIG: $(kpsewhich -var-value=TEXMFSYSCONFIG)
+    exit 1
+fi
+if [ ! -d $(kpsewhich -var-value=TEXMFSYSVAR) ]; then
+    echo E: no such TEXMFSYSVAR: $(kpsewhich -var-value=TEXMFSYSVAR)
+    exit 1
+fi
+
 
 ##
 ## INSTALLATION
@@ -79,9 +109,9 @@ which kpsewhich 2>&1 >/dev/null
 ## NOTE: TL16 already has
 ##  - ptex-fontmaps/hiragino{,-pron} (for legacy Mac OS X)
 ##  - ptex-fontmaps/hiragino-elcapitan{,-pron}
-mkdir -p $(kpsewhich -var-value=TEXMFLOCAL)/fonts/map/dvipdfmx/ptex-fontmaps/
-cp -a ${TLRESDIR}/jfontmaps/maps/hiragino* \
-   $(kpsewhich -var-value=TEXMFLOCAL)/fonts/map/dvipdfmx/ptex-fontmaps/
+HRGNMAPDIR=$(kpsewhich -var-value=TEXMFLOCAL)/fonts/map/dvipdfmx/ptex-fontmaps
+mkdir -p ${HRGNMAPDIR}/
+cp -a ${TLRESDIR}/jfontmaps/maps/hiragino* ${HRGNMAPDIR}/
 
 ## modified/imported a part of lnsysfnt.sh
 HRGNLEGACYDIR=$(kpsewhich -var-value=TEXMFLOCAL)/fonts/opentype/cjk-gs-integrate # screen/hiragino-legacy
