@@ -181,6 +181,8 @@ cjkgsintg(){
     local cjkgsExtDB=
     local cjkgsopts=
 
+    local CJKGSINTGTEMP=$(mktemp -d) # dummy directory
+
     ## See cjk-gs-support/README-macos.md in details
     case ${OSXVERSION} in
         10.[0-9]|10.[0-9].*|10.10|10.10.*)
@@ -201,8 +203,11 @@ cjkgsintg(){
     fi
 
     pushd ${TLRESDIR}/cjk-gs-support/
-    ./cjk-gs-integrate.pl --link-texmf ${cjkgsopts} || return 1
+    ./cjk-gs-integrate.pl \
+        --link-texmf --force --debug \
+        --output ${CJKGSINTGTEMP} ${cjkgsopts} || return 1
     popd
+    rm -rf ${CJKGSINTGTEMP}
     return 0
 }
 
