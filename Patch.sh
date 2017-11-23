@@ -196,7 +196,7 @@ cjkgsintg(){
             exit 1
             ;;
     esac
-    if [ -z "${cjkgsExtDB}" ]; then
+    if [ ! -z "${cjkgsExtDB}" ]; then
         cjkgsopts="--fontdef-add=${TLRESDIR}/cjk-gs-support/cjkgs-macos-${cjkgsExtDB}.dat"
     fi
 
