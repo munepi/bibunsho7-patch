@@ -1,3 +1,6 @@
 [submodule "jfontmaps"]
 	path = jfontmaps
 	url = git@github.com:texjporg/jfontmaps.git
+[submodule "cjk-gs-support"]
+	path = cjk-gs-support
+	url = git@github.com:texjporg/cjk-gs-support.git
