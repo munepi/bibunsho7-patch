@@ -205,7 +205,7 @@ cjkgsintg(){
 }
 
 ## link Mac OS bundled fonts into TEXMFLOCAL/fonts/{open,true}type/cjk-gs-integrate/
-if [ ${with_cjkgssupport} -eq 1 }; then
+if [ ${with_cjkgssupport} -eq 1 ]; then
     cjkgsintg || exit 1
 else
     lnsysfnt || exit 1
