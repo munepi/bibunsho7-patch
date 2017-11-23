@@ -47,8 +47,11 @@ realpath() {
     return 0
 }
 
-## 
+## get app's Resources directory
 TLRESDIR=$(dirname $(realpath $0))
+
+## flag to set up OS-bundled Hiragino fonts with Resources/cjk-gs-support
+with_cjkgssupport=${with_cjkgssupport:-1} ## default: 1 (true)
 
 ## set Mac OS X version
 OSXVERSION=${OSXVERSION:-$(sw_vers -productVersion)}
@@ -100,73 +103,120 @@ mkdir -p ${HRGNMAPDIR}/
 cp -a ${TLRESDIR}/jfontmaps/maps/hiragino* ${HRGNMAPDIR}/
 
 ## modified/imported a part of lnsysfnt.sh
-HRGNLEGACYDIR=$(kpsewhich -var-value=TEXMFLOCAL)/fonts/opentype/cjk-gs-integrate # screen/hiragino-legacy
-HRGNDIR=$(kpsewhich -var-value=TEXMFLOCAL)/fonts/truetype/cjk-gs-integrate # screen/hiragino
+## https://gist.github.com/munepi/396ef67e3ad051663399
+## NOTE: This lnsysfnt() only links Mac OS X bundled Hiragino fonts into
+## TEXMFLOCAL/fonts/opentype/cjk-gs-integrate/
+lnsysfnt(){
+    local HRGNLEGACYDIR=$(kpsewhich -var-value=TEXMFLOCAL)/fonts/opentype/cjk-gs-integrate # screen/hiragino-legacy
+    local HRGNDIR=$(kpsewhich -var-value=TEXMFLOCAL)/fonts/truetype/cjk-gs-integrate # screen/hiragino
 
-mkdir -p ${HRGNDIR}
-pushd ${HRGNDIR}
-rm -f HiraginoSerif*.ttc HiraginoSans*.ttc
-case ${OSXVERSION} in
-    10.[0-9]|10.[0-9].*|10.10|10.10.*)
-        ## bundled Hiragino OpenType fonts (OS X 10.10 Yosemite or lower versions)
-        mkdir -p ${HRGNLEGACYDIR}
-        pushd ${HRGNLEGACYDIR}
-        rm -f HiraMin*.otf HiraKaku*.otf HiraMaru*.otf
+    mkdir -p ${HRGNDIR}
+    pushd ${HRGNDIR}
+    rm -f HiraginoSerif*.ttc HiraginoSans*.ttc
+    case ${OSXVERSION} in
+        10.[0-9]|10.[0-9].*|10.10|10.10.*)
+            ## bundled Hiragino OpenType fonts (OS X 10.10 Yosemite or lower versions)
+            mkdir -p ${HRGNLEGACYDIR}
+            pushd ${HRGNLEGACYDIR}
+            rm -f HiraMin*.otf HiraKaku*.otf HiraMaru*.otf
 
-        ln -s "/Library/Fonts/ヒラギノ明朝 Pro W3.otf" HiraMinPro-W3.otf
-        ln -s "/Library/Fonts/ヒラギノ明朝 Pro W6.otf" HiraMinPro-W6.otf
-        ln -s "/Library/Fonts/ヒラギノ丸ゴ Pro W4.otf" HiraMaruPro-W4.otf
-        ln -s "/Library/Fonts/ヒラギノ角ゴ Pro W3.otf" HiraKakuPro-W3.otf
-        ln -s "/Library/Fonts/ヒラギノ角ゴ Pro W6.otf" HiraKakuPro-W6.otf
-        ln -s "/Library/Fonts/ヒラギノ角ゴ Std W8.otf" HiraKakuStd-W8.otf
+            ln -s "/Library/Fonts/ヒラギノ明朝 Pro W3.otf" HiraMinPro-W3.otf
+            ln -s "/Library/Fonts/ヒラギノ明朝 Pro W6.otf" HiraMinPro-W6.otf
+            ln -s "/Library/Fonts/ヒラギノ丸ゴ Pro W4.otf" HiraMaruPro-W4.otf
+            ln -s "/Library/Fonts/ヒラギノ角ゴ Pro W3.otf" HiraKakuPro-W3.otf
+            ln -s "/Library/Fonts/ヒラギノ角ゴ Pro W6.otf" HiraKakuPro-W6.otf
+            ln -s "/Library/Fonts/ヒラギノ角ゴ Std W8.otf" HiraKakuStd-W8.otf
 
-        ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W3.otf" HiraMinProN-W3.otf
-        ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W6.otf" HiraMinProN-W6.otf
-        ln -s "/Library/Fonts/ヒラギノ丸ゴ ProN W4.otf"        HiraMaruProN-W4.otf
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴ ProN W3.otf" HiraKakuProN-W3.otf
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴ ProN W6.otf" HiraKakuProN-W6.otf
-        ln -s "/Library/Fonts/ヒラギノ角ゴ StdN W8.otf"        HiraKakuStdN-W8.otf
-        popd
+            ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W3.otf" HiraMinProN-W3.otf
+            ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W6.otf" HiraMinProN-W6.otf
+            ln -s "/Library/Fonts/ヒラギノ丸ゴ ProN W4.otf"        HiraMaruProN-W4.otf
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴ ProN W3.otf" HiraKakuProN-W3.otf
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴ ProN W6.otf" HiraKakuProN-W6.otf
+            ln -s "/Library/Fonts/ヒラギノ角ゴ StdN W8.otf"        HiraKakuStdN-W8.otf
+            popd
+            ;;
+        10.11|10.11.*|10.12|10.12.*)
+            ## bundled Hiragino OpenType fonts/collections (OS X 10.11 El Capitan/macOS 10.12 Sierra)
+            ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W3.ttc"  HiraginoSerif-W3.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W6.ttc"  HiraginoSerif-W6.ttc
+            ln -s "/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc"         HiraginoSansR-W4.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc" HiraginoSans-W3.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc" HiraginoSans-W6.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W8.ttc" HiraginoSans-W8.ttc
+
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W1.ttc" HiraginoSans-W1.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W2.ttc" HiraginoSans-W2.ttc
+
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W0.ttc" HiraginoSans-W0.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc" HiraginoSans-W4.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W5.ttc" HiraginoSans-W5.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc" HiraginoSans-W7.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc" HiraginoSans-W9.ttc
+            ;;
+        10.13|10.13.*)
+            ## bundled Hiragino OpenType fonts/collections (OS X 10.13 High Sierra)
+            ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN.ttc"     HiraginoSerif.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc"  HiraginoSansR-W4.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W0.ttc" HiraginoSans-W0.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W1.ttc" HiraginoSans-W1.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W2.ttc" HiraginoSans-W2.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc" HiraginoSans-W3.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc" HiraginoSans-W4.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W5.ttc" HiraginoSans-W5.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc" HiraginoSans-W6.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc" HiraginoSans-W7.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W8.ttc" HiraginoSans-W8.ttc
+            ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc" HiraginoSans-W9.ttc
+            ;;
+        *)
+            echo E: not supported: ${OSXVERSION}
+            return 1
+            ;;
+    esac
+    popd
+    return 0
+}
+
+cjkgsintg(){
+    local cjkgsExtDB=
+    local cjkgsopts=
+
+    local CJKGSINTGTEMP=$(mktemp -d) # dummy directory
+
+    ## See cjk-gs-support/README-macos.md in details
+    case ${OSXVERSION} in
+        10.[0-9]|10.[0-9].*|10.10|10.10.*)
         ;;
-    10.11|10.11.*|10.12|10.12.*)
-        ## bundled Hiragino OpenType fonts/collections (OS X 10.11 El Capitan/macOS 10.12 Sierra)
-        ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W3.ttc"  HiraginoSerif-W3.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W6.ttc"  HiraginoSerif-W6.ttc
-        ln -s "/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc"         HiraginoSansR-W4.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc" HiraginoSans-W3.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc" HiraginoSans-W6.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W8.ttc" HiraginoSans-W8.ttc
+        10.11|10.11.*)
+            cjkgsExtDB=elcapitan;;
+        10.12|10.12.*)
+            cjkgsExtDB=sierra;;
+        10.13|10.13.*)
+            cjkgsExtDB=highsierra;;
+        *)
+            echo E: not supported: ${OSXVERSION}
+            exit 1
+            ;;
+    esac
+    if [ ! -z "${cjkgsExtDB}" ]; then
+        cjkgsopts="--fontdef-add=./cjkgs-macos-${cjkgsExtDB}.dat"
+    fi
 
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W1.ttc" HiraginoSans-W1.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W2.ttc" HiraginoSans-W2.ttc
+    pushd ${TLRESDIR}/cjk-gs-support/
+    ./cjk-gs-integrate.pl \
+        --link-texmf --force --debug \
+        --output ${CJKGSINTGTEMP} ${cjkgsopts} || return 1
+    popd
+    rm -rf ${CJKGSINTGTEMP}
+    return 0
+}
 
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W0.ttc" HiraginoSans-W0.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc" HiraginoSans-W4.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W5.ttc" HiraginoSans-W5.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc" HiraginoSans-W7.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc" HiraginoSans-W9.ttc
-        ;;
-    10.13|10.13.*)
-        ## bundled Hiragino OpenType fonts/collections (OS X 10.13 High Sierra)
-        ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN.ttc"     HiraginoSerif.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc"  HiraginoSansR-W4.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W0.ttc" HiraginoSans-W0.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W1.ttc" HiraginoSans-W1.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W2.ttc" HiraginoSans-W2.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc" HiraginoSans-W3.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc" HiraginoSans-W4.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W5.ttc" HiraginoSans-W5.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc" HiraginoSans-W6.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc" HiraginoSans-W7.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W8.ttc" HiraginoSans-W8.ttc
-        ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc" HiraginoSans-W9.ttc
-        ;;
-    *)
-        echo 
-        exit 
-        ;;
-esac
-popd
+## link Mac OS bundled fonts into TEXMFLOCAL/fonts/{open,true}type/cjk-gs-integrate/
+if [ ${with_cjkgssupport} -eq 1 ]; then
+    cjkgsintg || exit 1
+else
+    lnsysfnt || exit 1
+fi
 
 ## set hiragino-<Mac OS X flavor>-pron
 kanjiEmbed=

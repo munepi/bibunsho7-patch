@@ -23,6 +23,7 @@ ${BIBUNSHOAPP}:
 
 	cp -a Patch.sh ${BIBUNSHOAPP}/Contents/Resources/
 	cp -a jfontmaps ${BIBUNSHOAPP}/Contents/Resources/
+	cp -a cjk-gs-support ${BIBUNSHOAPP}/Contents/Resources/
 
 	## replace icns file to ad-hoc our icon :D
 	cp -a artwork/bibunsho7.icns ${BIBUNSHOAPP}/Contents/Resources/applet.icns
