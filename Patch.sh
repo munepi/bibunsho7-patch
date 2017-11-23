@@ -65,8 +65,18 @@ TLPATH=${TLPATH:-}
 if [ -z "${TLPATH}" ]; then
     if [ -x /Applications/TeXLive/Library/texlive/2016/bin/x86_64-darwin/kpsewhich ]; then
         TLPATH=/Applications/TeXLive/Library/texlive/2016/bin/x86_64-darwin
+    elif [ -x /Applications/TeXLive/Library/texlive/2013/bin/x86_64-darwin/kpsewhich ]; then
+        TLPATH=/Applications/TeXLive/Library/texlive/2013/bin/x86_64-darwin
+    elif [ -x /usr/local/texlive/2017/bin/x86_64-darwin/kpsewhich ]; then
+        TLPATH=/usr/local/texlive/2017/bin/x86_64-darwin
     elif [ -x /usr/local/texlive/2016/bin/x86_64-darwin/kpsewhich ]; then
         TLPATH=/usr/local/texlive/2016/bin/x86_64-darwin
+    elif [ -x /usr/local/texlive/2015/bin/x86_64-darwin/kpsewhich ]; then
+        TLPATH=/usr/local/texlive/2015/bin/x86_64-darwin
+    elif [ -x /usr/local/texlive/2014/bin/x86_64-darwin/kpsewhich ]; then
+        TLPATH=/usr/local/texlive/2014/bin/x86_64-darwin
+    elif [ -x /usr/local/texlive/2013/bin/x86_64-darwin/kpsewhich ]; then
+        TLPATH=/usr/local/texlive/2013/bin/x86_64-darwin
     fi
 fi
 export PATH=${TLPATH}:${PATH}
