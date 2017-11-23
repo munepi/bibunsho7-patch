@@ -203,6 +203,20 @@ cjkgsintg(){
     fi
 
     pushd ${TLRESDIR}/cjk-gs-support/
+    ## cleanup all possible links, which could have been generated in the previous runs
+    ./cjk-gs-integrate.pl \
+        --cleanup --output ${CJKGSINTGTEMP} ||:
+    ./cjk-gs-integrate.pl \
+        --cleanup --output ${CJKGSINTGTEMP} \
+        --fontdef-add=./cjkgs-macos-elcapitan.dat ||:
+    ./cjk-gs-integrate.pl \
+        --cleanup --output ${CJKGSINTGTEMP} \
+        --fontdef-add=./cjkgs-macos-sierra.dat ||:
+    ./cjk-gs-integrate.pl \
+        --cleanup --output ${CJKGSINTGTEMP} \
+        --fontdef-add=./cjkgs-macos-highsierra.dat ||:
+
+    ## Then, make links
     ./cjk-gs-integrate.pl \
         --link-texmf --force --debug \
         --output ${CJKGSINTGTEMP} ${cjkgsopts} || return 1
