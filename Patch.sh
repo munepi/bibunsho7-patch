@@ -197,10 +197,12 @@ cjkgsintg(){
             ;;
     esac
     if [ ! -z "${cjkgsExtDB}" ]; then
-        cjkgsopts="--fontdef-add=${TLRESDIR}/cjk-gs-support/cjkgs-macos-${cjkgsExtDB}.dat"
+        cjkgsopts="--fontdef-add=./cjkgs-macos-${cjkgsExtDB}.dat"
     fi
 
-    ${TLRESDIR}/cjk-gs-support/cjk-gs-integrate.pl --link-texmf ${cjkgsopts} || return 1
+    pushd ${TLRESDIR}/cjk-gs-support/
+    ./cjk-gs-integrate.pl --link-texmf ${cjkgsopts} || return 1
+    popd
     return 0
 }
 
