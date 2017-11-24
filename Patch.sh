@@ -55,14 +55,13 @@ export PATH=${TLPATH}:${PATH}
 
 ## get app's Resources directory
 TLRESDIR=$(cd $(dirname $0); pwd)
-exit
 
 ## flag to set up OS-bundled Hiragino fonts with Resources/cjk-gs-support
 with_cjkgssupport=${with_cjkgssupport:-1} ## default: 1 (true)
 
 ## set Mac OS X version
 OSXVERSION=${OSXVERSION:-$(sw_vers -productVersion)}
-OSXVERSION=$(echo ${OSXVERSION} | sed s,\\\(10\\\.[0-9]*\\\)\\\.[0-9]*,\\\1,) # replace: 10.X.Y -> 10.X
+OSXVERSION=$(echo ${OSXVERSION} | awk -F. '{ OFS=FS; print $1, $2 }') # replace: 10.X.Y -> 10.X
 
 ## check some binaries and system-wide TEXMF trees
 which kpsewhich || exit 1
