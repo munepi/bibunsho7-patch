@@ -29,34 +29,6 @@ set -e
 ## INITIALIZATION
 ## ==============================
 
-## realpath [file]
-realpath() {
-    local f=$@
-    local base=
-    local dir=
-
-    if [ -d "$f" ]; then
-        base=""
-        dir="$f"
-    else
-        base="/$(basename "$f")"
-        dir=$(dirname "$f")
-    fi;
-    dir=$(cd "$dir" && pwd)
-    echo "$dir$base"
-    return 0
-}
-
-## get app's Resources directory
-TLRESDIR=$(dirname $(realpath $0))
-
-## flag to set up OS-bundled Hiragino fonts with Resources/cjk-gs-support
-with_cjkgssupport=${with_cjkgssupport:-1} ## default: 1 (true)
-
-## set Mac OS X version
-OSXVERSION=${OSXVERSION:-$(sw_vers -productVersion)}
-OSXVERSION=$(echo ${OSXVERSION} | sed s,\\\(10\\\.[0-9]*\\\)\\\.[0-9]*,\\\1,) # replace: 10.X.Y -> 10.X
-
 ## initialize some environment variables
 export LANG=C LANGUAGE=C LC_ALL=C
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
@@ -80,6 +52,17 @@ if [ -z "${TLPATH}" ]; then
     fi
 fi
 export PATH=${TLPATH}:${PATH}
+
+## get app's Resources directory
+TLRESDIR=$(cd $(dirname $0); pwd)
+exit
+
+## flag to set up OS-bundled Hiragino fonts with Resources/cjk-gs-support
+with_cjkgssupport=${with_cjkgssupport:-1} ## default: 1 (true)
+
+## set Mac OS X version
+OSXVERSION=${OSXVERSION:-$(sw_vers -productVersion)}
+OSXVERSION=$(echo ${OSXVERSION} | sed s,\\\(10\\\.[0-9]*\\\)\\\.[0-9]*,\\\1,) # replace: 10.X.Y -> 10.X
 
 ## check some binaries and system-wide TEXMF trees
 which kpsewhich || exit 1
