@@ -212,21 +212,12 @@ cjkgsintg(){
         cjkgsopts="--fontdef-add=./cjkgs-macos-${cjkgsExtDB}.dat"
     fi
 
-    pushd ${TLRESDIR}/cjk-gs-support/
-    ## cleanup all possible links, which could have been generated in the previous runs
-    ./cjk-gs-integrate.pl \
-        --cleanup --output ${CJKGSINTGTEMP} ||:
-    ./cjk-gs-integrate.pl \
-        --cleanup --output ${CJKGSINTGTEMP} \
-        --fontdef-add=./cjkgs-macos-elcapitan.dat ||:
-    ./cjk-gs-integrate.pl \
-        --cleanup --output ${CJKGSINTGTEMP} \
-        --fontdef-add=./cjkgs-macos-sierra.dat ||:
-    ./cjk-gs-integrate.pl \
-        --cleanup --output ${CJKGSINTGTEMP} \
-        --fontdef-add=./cjkgs-macos-highsierra.dat ||:
+    ## cleanup all links, which could have been generated in the previous runs
+    rm -rf $(kpsewhich -var-value=TEXMFLOCAL)/fonts/opentype/cjk-gs-integrate
+    rm -rf $(kpsewhich -var-value=TEXMFLOCAL)/fonts/truetype/cjk-gs-integrate
 
     ## Then, make links
+    pushd ${TLRESDIR}/cjk-gs-support/
     ./cjk-gs-integrate.pl \
         --link-texmf --force --debug \
         --output ${CJKGSINTGTEMP} ${cjkgsopts} || return 1
