@@ -22,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 # SOFTWARE.
 
-set n to 370 -- 346 /tmp/bibunsho7-patch.log
+set n to 330 -- 308 /tmp/bibunsho7-patch.log
 set progress total steps to n
 set progress description to "Patch.app: 実行中..."
 set progress additional description to "待機中..."
