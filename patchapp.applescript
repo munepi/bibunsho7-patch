@@ -34,6 +34,9 @@ try
     do shell script quoted form of (POSIX path of (path to resource "Patch.sh")) & ¬
         space & "&>" & patchLog & space & "&" with administrator privileges
 
+    -- activate the progress bar intentionally
+    activate
+
     repeat with i from 1 to n
         delay 0.1
 
