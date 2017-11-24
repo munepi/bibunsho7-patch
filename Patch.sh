@@ -35,20 +35,19 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 TLPATH=${TLPATH:-}
 if [ -z "${TLPATH}" ]; then
-    if [ -x /Applications/TeXLive/Library/texlive/2016/bin/x86_64-darwin/kpsewhich ]; then
-        TLPATH=/Applications/TeXLive/Library/texlive/2016/bin/x86_64-darwin
-    elif [ -x /Applications/TeXLive/Library/texlive/2013/bin/x86_64-darwin/kpsewhich ]; then
-        TLPATH=/Applications/TeXLive/Library/texlive/2013/bin/x86_64-darwin
-    elif [ -x /usr/local/texlive/2017/bin/x86_64-darwin/kpsewhich ]; then
-        TLPATH=/usr/local/texlive/2017/bin/x86_64-darwin
-    elif [ -x /usr/local/texlive/2016/bin/x86_64-darwin/kpsewhich ]; then
-        TLPATH=/usr/local/texlive/2016/bin/x86_64-darwin
-    elif [ -x /usr/local/texlive/2015/bin/x86_64-darwin/kpsewhich ]; then
-        TLPATH=/usr/local/texlive/2015/bin/x86_64-darwin
-    elif [ -x /usr/local/texlive/2014/bin/x86_64-darwin/kpsewhich ]; then
-        TLPATH=/usr/local/texlive/2014/bin/x86_64-darwin
-    elif [ -x /usr/local/texlive/2013/bin/x86_64-darwin/kpsewhich ]; then
-        TLPATH=/usr/local/texlive/2013/bin/x86_64-darwin
+    TLPATH=$(
+        (
+            for ii in /Applications/TeXLive/Library/texlive /usr/local/texlive ; do
+                [ -d "${ii}" ] && echo $ii
+            done | head -1 | while read ff ; do
+                find "${ff}" -maxdepth 3 -type d -name "x86_64-darwin"
+            done | grep '/20[0-9][0-9]/bin/' | sort | tail -1
+        )
+          )
+
+    if [ -z "${TLPATH}" ] ; then
+        echo E: TeX Live environment not detected
+        exit 1
     fi
 fi
 export PATH=${TLPATH}:${PATH}
