@@ -1,6 +1,10 @@
 Bibunsho7-patch/Patch.app: ［改訂第7版］LaTeX2e美文書作成入門 ヒラギノフォントパッチ
 ====================
 
+「新しいmacOSへアップグレードしてから、 `(u)platex+dvipdfmx` でヒラギノフォントを埋め込めなくなって困っています :cry: 」という方向けのアプリです！
+
+## 概要
+
 ［改訂第7版］LaTeX2e美文書作成入門の付録DVD-ROM内のMac OS X用インストーラーから、
 TeX Live 2016をデフォルト（`/Applications/TeXLive/Library/texlive`）でインストールした方のうち、
 
@@ -13,8 +17,8 @@ TeX Live 2016をデフォルト（`/Applications/TeXLive/Library/texlive`）で�
 
 ## 利用方法
 
- 1. `bibunsho7-patch-YYYYMMDD.dmg` をダウンロードします。
- 1. `bibunsho7-patch-YYYYMMDD.dmg` をダブルクリック、もしくは、右クリックより開くをして、dmgを展開します。
+ 1. 最新版 `bibunsho7-patch-X.X-YYYYMMDD.dmg` を [Releases - munepi/bibunsho7-patch](https://github.com/munepi/bibunsho7-patch/releases) からダウンロードします。
+ 1. ダウンロードした `bibunsho7-patch-X.X-YYYYMMDD.dmg` をダブルクリック、もしくは、右クリックより開くをして、dmgを展開します。
  1. 展開したdmgのフォルダ内にある `Patch.app` をダブルクリック、もしくは、右クリックより開くをして実行します。
 
 Happy TeXing!
