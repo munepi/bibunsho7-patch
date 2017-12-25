@@ -207,6 +207,10 @@ cjkgsintg(){
     return 0
 }
 
+## remove all links which could have been generated in the bibunsho6 installer runs
+rm -rf $(kpsewhich -var-value=TEXMFLOCAL)/fonts/opentype/screen
+rm -rf $(kpsewhich -var-value=TEXMFLOCAL)/fonts/opentype/jiyukobo
+
 ## link Mac OS bundled fonts into TEXMFLOCAL/fonts/{open,true}type/cjk-gs-integrate/
 if [ ${with_cjkgssupport} -eq 1 ]; then
     cjkgsintg || exit 1
