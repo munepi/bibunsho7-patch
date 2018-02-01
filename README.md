@@ -27,3 +27,14 @@ Happy TeXing!
 
  * [奥村晴彦先生](http://okumuralab.org/bibun7/)
  * [技術評論社](http://gihyo.jp/book/2017/978-4-7741-8705-1/support)
+
+
+## License
+
+This program is licensed under the terms of the MIT License.
+
+
+--------------------
+
+Munehiro Yamamoto
+https://github.com/munepi
