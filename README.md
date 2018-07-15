@@ -8,8 +8,8 @@ Bibunsho7-patch/Patch.app: ［改訂第7版］LaTeX2e美文書作成入門 ヒ�
 ［改訂第7版］LaTeX2e美文書作成入門の付録DVD-ROM内のMac OS X用インストーラーから、
 TeX Live 2016（第1刷）またはTeX Live 2017（第2刷）をデフォルト（`/Applications/TeXLive/Library/texlive`）でインストールした方のうち、
 
- * 手元のMac OS XバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra)にアップグレードした方。
- * 上記のOSバージョンをアップグレード後、`(u)platex+dvipdfmx` でMac OS Xに同梱されているヒラギノフォントを埋め込めずに、どうすればよいか分からない方。
+ * 手元のMac OSバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.14 (Mojave)にアップグレードした方。
+ * 上記のMac OSバージョンをアップグレード後、`(u)platex+dvipdfmx` でMac OSに同梱されているヒラギノフォントを埋め込めずに、どうすればよいか分からない方。
  * TeX Liveのディレクトリ構成に関して、全くの分からない方。
  * ターミナル.appなどのコマンドライン操作が苦手な方。
 
@@ -28,6 +28,14 @@ Happy TeXing!
 
  * [奥村晴彦先生](http://okumuralab.org/bibun7/)
  * [技術評論社](http://gihyo.jp/book/2017/978-4-7741-8705-1/support)
+
+## 本アプリの解説ページ
+
+[TeX ＆ LaTeX Advent Caleandar 2017](https://adventar.org/calendars/2229)の8日目の記事として、本アプリの解説を簡単に載せました。
+
+ * [［改訂第7版］LaTeX2e美文書作成入門 ヒラギノフォントパッチ](https://qiita.com/munepi/items/c4274da0646b3e785c7f) via [Qiita](https://qiita.com/)
+
+なお、本ページをWebブラウザで開きますと、パット見の解説量に対してWebブラウザ内のスクロールバーがやたらめったら余裕がありますので、どうかお察しください☃
 
 
 ## License
