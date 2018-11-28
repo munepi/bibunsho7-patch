@@ -41,7 +41,7 @@ if [ -z "${TLPATH}" ]; then
                 [ -d "${ii}" ] && echo $ii
             done | head -1 | while read ff ; do
                 find "${ff}" -maxdepth 3 -type d -name "x86_64-darwin"
-            done | grep '/20[0-9][0-9]/bin/' | sort | tail -1
+            done | grep -e '/20[0-9][0-9][a-z]*/bin/' | sort | tail -1
         )
           )
 
