@@ -37,7 +37,7 @@ TLPATH=${TLPATH:-}
 if [ -z "${TLPATH}" ]; then
     TLPATH=$(
         (
-            for ii in /Applications/TeXLive/Library/texlive /usr/local/texlive ; do
+            for ii in /Applications/TeXLive/Library/texlive/ /usr/local/texlive/ ; do
                 [ -d "${ii}" ] && echo $ii
             done | head -1 | while read ff ; do
                 find "${ff}" -maxdepth 3 -type d -name "x86_64-darwin"
