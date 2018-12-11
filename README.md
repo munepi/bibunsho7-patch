@@ -5,12 +5,16 @@ Bibunsho7-patch/Patch.app: ［改訂第7版］LaTeX2e美文書作成入門 ヒ�
 
 ## 概要
 
-［改訂第7版］LaTeX2e美文書作成入門の付録DVD-ROM内のMac OS X用インストーラーから、
-TeX Live 2016（第1刷）またはTeX Live 2017（第2刷）をデフォルト（`/Applications/TeXLive/Library/texlive`）でインストールした方のうち、
+ * ［改訂第7版］LaTeX2e美文書作成入門の付録DVD-ROM内のMac OS X用インストーラーから、
+   TeX Live 2016（第1刷）またはTeX Live 2017（第2刷）をデフォルト（`/Applications/TeXLive/Library/texlive/YYYY/`）でインストールした方
+ * （［こ㊙こ㊙だ㊙けのナイショ話、］M㊙cTeXとそのお仲間であるB㊙sicTeX　から、
+   TeX Live YYYYをデフォルト（`/usr/local/texlive/YYYY{,basic}/`）でインストールした方）
+
+のうち、
 
  * 手元のMac OSバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.14 (Mojave)にアップグレードした方。
  * 上記のMac OSバージョンをアップグレード後、`(u)platex+dvipdfmx` でMac OSに同梱されているヒラギノフォントを埋め込めずに、どうすればよいか分からない方。
- * TeX Liveのディレクトリ構成に関して、全くの分からない方。
+ * TeX Liveのディレクトリ構成に関して、全く分からない方。
  * ターミナル.appなどのコマンドライン操作が苦手な方。
 
 上記に該当する方で、同書籍の付録DVD-ROMからインストールされるTeX Live環境を引き続き利用しつつ、
