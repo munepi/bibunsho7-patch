@@ -20,10 +20,6 @@ Bibunsho7-patch/Patch.app: ［改訂第7版］LaTeX2e美文書作成入門 ヒ�
 上記に該当する方で、同書籍の付録DVD-ROMからインストールされるTeX Live環境を引き続き利用しつつ、
 `(u)platex+dvipdfmx` でヒラギノフォントを埋め込めるようにしたい方は、本パッチをご利用になりますと、簡単に実現できます。
 
-## キーワード
-
-Mac OS X, macOS, TeX Live, x86_64-darwin, MacTeX, BasicTeX, pLaTeX, upLaTeX, dvipdfmx, ヒラギノフォント, ヒラギノ明朝, HiraMin, HiraginoSerif, ヒラギノ角ゴ, HiraKaku, HiraginoSans, ヒラギノ丸ゴ, HiraMaru, HiraginoSansR
-
 ## 利用方法
 
  1. 最新版 `bibunsho7-patch-X.X-YYYYMMDD.dmg` を [Releases - munepi/bibunsho7-patch](https://github.com/munepi/bibunsho7-patch/releases) からダウンロードします。
@@ -45,6 +41,10 @@ Happy TeXing!
 
 なお、本ページをWebブラウザで開きますと、パット見の解説量に対してWebブラウザ内のスクロールバーがやたらめったら余裕がありますので、どうかお察しください☃
 
+
+## キーワード
+
+Mac OS X, macOS, TeX Live, x86_64-darwin, MacTeX, BasicTeX, pLaTeX, upLaTeX, dvipdfmx, ヒラギノフォント, ヒラギノ明朝, HiraMin, HiraginoSerif, ヒラギノ角ゴ, HiraKaku, HiraginoSans, ヒラギノ丸ゴ, HiraMaru, HiraginoSansR
 
 ## License
 
