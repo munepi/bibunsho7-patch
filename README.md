@@ -5,9 +5,9 @@ Bibunsho7-patch/Patch.app: ［改訂第7版］LaTeX2e美文書作成入門 ヒ�
 
 ## 概要
 
- * ［改訂第7版］LaTeX2e美文書作成入門の付録DVD-ROM内のMac OS X用インストーラーから、
+ * [［改訂第7版］LaTeX2e美文書作成入門](http://gihyo.jp/book/2017/978-4-7741-8705-1)の付録DVD-ROM内のMac OS X用インストーラーから、
    TeX Live 2016（第1刷）またはTeX Live 2017（第2刷）をデフォルト（`/Applications/TeXLive/Library/texlive/YYYY/`）でインストールした方
- * （［こ㊙こ㊙だ㊙けのナイショ話、］M㊙cTeXとそのお仲間であるB㊙sicTeX　から、
+ * （［こ㊙こ㊙だ㊙けのナイショ話、］[M㊙cTeX](http://www.tug.org/mactex/)とそのお仲間である[B㊙sicTeX](http://www.tug.org/mactex/morepackages.html)　から、
    TeX Live YYYYをデフォルト（`/usr/local/texlive/YYYY{,basic}/`）でインストールした方）
 
 のうち、
