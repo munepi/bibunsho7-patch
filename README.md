@@ -44,7 +44,7 @@ Happy TeXing!
 
 ## キーワード
 
-Mac OS X, macOS, TeX Live, x86_64-darwin, MacTeX, BasicTeX, pLaTeX, upLaTeX, dvipdfmx, ヒラギノフォント, ヒラギノ明朝, HiraMin, HiraginoSerif, ヒラギノ角ゴ, HiraKaku, HiraginoSans, ヒラギノ丸ゴ, HiraMaru, HiraginoSansR
+Mac OS X, macOS, TeX Live, x86_64-darwin, MacTeX, BasicTeX, LaTeX, pLaTeX, upLaTeX, dvipdfmx, ヒラギノフォント, ヒラギノ明朝, HiraMin, HiraginoSerif, ヒラギノ角ゴ, HiraKaku, HiraginoSans, ヒラギノ丸ゴ, HiraMaru, HiraginoSansR
 
 ## License
 
