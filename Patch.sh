@@ -80,6 +80,24 @@ if [ ! -d $(kpsewhich -var-value=TEXMFSYSVAR) ]; then
     exit 1
 fi
 
+## 
+cat<<EOF
+----------------------------------------
+SETTINGS
+----------------------------------------
+TLPATH: ${TLPATH}
+TLRESDIR: ${TLRESDIR}
+with_cjkgssupport: ${with_cjkgssupport}
+OSXVERSION: ${OSXVERSION}
+TEXMFLOCAL: $(kpsewhich -var-value=TEXMFLOCAL)
+TEXMFSYSCONFIG: $(kpsewhich -var-value=TEXMFSYSCONFIG)
+TEXMFSYSVAR: $(kpsewhich -var-value=TEXMFSYSVAR)
+
+----------------------------------------
+texmf.cnf $(kpsewhich texmf.cnf)
+----------------------------------------
+$(cat $(kpsewhich texmf.cnf))
+EOF
 
 ##
 ## INSTALLATION
