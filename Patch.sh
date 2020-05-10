@@ -123,7 +123,7 @@ lnsysfnt(){
     pushd ${HRGNDIR}
     rm -f HiraginoSerif*.ttc HiraginoSans*.ttc
     case ${OSXVERSION} in
-        10.[0-9]|10.[0-9].*|10.10|10.10.*)
+        10.[0-9]|10.10)
             ## bundled Hiragino OpenType fonts (OS X 10.10 Yosemite or lower versions)
             mkdir -p ${HRGNLEGACYDIR}
             pushd ${HRGNLEGACYDIR}
@@ -144,7 +144,7 @@ lnsysfnt(){
             ln -s "/Library/Fonts/ヒラギノ角ゴ StdN W8.otf"        HiraKakuStdN-W8.otf
             popd
             ;;
-        10.1[12]|10.1[12].*)
+        10.1[12])
             ## bundled Hiragino OpenType fonts/collections (OS X 10.11 El Capitan/macOS 10.12 Sierra)
             ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W3.ttc"  HiraginoSerif-W3.ttc
             ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN W6.ttc"  HiraginoSerif-W6.ttc
@@ -162,7 +162,7 @@ lnsysfnt(){
             ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc" HiraginoSans-W7.ttc
             ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc" HiraginoSans-W9.ttc
             ;;
-        10.1[345]|10.1[345].*)
+        10.1[345])
             ## bundled Hiragino OpenType fonts/collections (OS X 10.13 High Sierra)
             ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN.ttc"     HiraginoSerif.ttc
             ln -s "/System/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc"  HiraginoSansR-W4.ttc
@@ -194,13 +194,13 @@ cjkgsintg(){
 
     ## See cjk-gs-support/README-macos.md in details
     case ${OSXVERSION} in
-        10.[0-9]|10.[0-9].*|10.10|10.10.*)
+        10.[0-9]|10.10)
         ;;
-        10.11|10.11.*)
+        10.11)
             cjkgsExtDB=elcapitan;;
-        10.12|10.12.*)
+        10.12)
             cjkgsExtDB=sierra;;
-        10.1[345]|10.1[345].*)
+        10.1[345])
             cjkgsExtDB=highsierra;;
         *)
             echo E: not supported: ${OSXVERSION}
@@ -239,11 +239,11 @@ fi
 ## set hiragino-<Mac OS X flavor>-pron
 kanjiEmbed=
 case ${OSXVERSION} in
-    10.[0-9]|10.[0-9].*|10.10|10.10.*)
+    10.[0-9]|10.10)
         kanjiEmbed=hiragino-pron;;
-    10.1[12]|10.1[12].*)
+    10.1[12])
         kanjiEmbed=hiragino-elcapitan-pron;;
-    10.1[345]|10.1[345].*)
+    10.1[345])
         kanjiEmbed=hiragino-highsierra-pron;;
     *)
         echo E: not supported: ${OSXVERSION}
