@@ -2,24 +2,24 @@
 
 # This program is licensed under the terms of the MIT License.
 #
-# Copyright 2018, 2019, 2020 Munehiro Yamamoto <munepixyz@gmail.com>
+# Copyright 2018, 2019, 2020, 2021 Munehiro Yamamoto <munepixyz@gmail.com>
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy of 
-# this software and associated documentation files (the "Software"), to deal in 
-# the Software without restriction, including without limitation the rights to 
-# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
-# of the Software, and to permit persons to whom the Software is furnished to do 
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+# of the Software, and to permit persons to whom the Software is furnished to do
 # so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all 
+# The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
 #
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
 set -x
@@ -80,7 +80,7 @@ if [ ! -d $(kpsewhich -var-value=TEXMFSYSVAR) ]; then
     exit 1
 fi
 
-## 
+##
 cat<<EOF
 ----------------------------------------
 SETTINGS
@@ -162,7 +162,7 @@ lnsysfnt(){
             ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc" HiraginoSans-W7.ttc
             ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc" HiraginoSans-W9.ttc
             ;;
-        10.1[345])
+        10.1[3-6]|11.[0-9])
             ## bundled Hiragino OpenType fonts/collections (OS X 10.13 High Sierra)
             ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN.ttc"     HiraginoSerif.ttc
             ln -s "/System/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc"  HiraginoSansR-W4.ttc
@@ -200,7 +200,7 @@ cjkgsintg(){
             cjkgsExtDB=elcapitan;;
         10.12)
             cjkgsExtDB=sierra;;
-        10.1[345])
+        10.1[3-6]|11.[0-9])
             cjkgsExtDB=highsierra;;
         *)
             echo E: not supported: ${OSXVERSION}
@@ -243,7 +243,7 @@ case ${OSXVERSION} in
         kanjiEmbed=hiragino-pron;;
     10.1[12])
         kanjiEmbed=hiragino-elcapitan-pron;;
-    10.1[345])
+    10.1[3-6]|11.[0-9])
         kanjiEmbed=hiragino-highsierra-pron;;
     *)
         echo E: not supported: ${OSXVERSION}
@@ -254,7 +254,7 @@ esac
 mkdir -p $(kpsewhich -var-value=TEXMFSYSCONFIG)/web2c/
 echo "kanjiEmbed ${kanjiEmbed}" >$(kpsewhich -var-value=TEXMFSYSCONFIG)/web2c/updmap.cfg
 
-## Finally, 
+## Finally,
 mktexlsr
 updmap-sys
 
