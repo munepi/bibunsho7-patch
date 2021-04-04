@@ -2,7 +2,7 @@
 
 # This program is licensed under the terms of the MIT License.
 #
-# Copyright 2018, 2019, 2020, 2021 Munehiro Yamamoto <munepixyz@gmail.com>
+# Copyright 2018-2021 Munehiro Yamamoto <munepixyz@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
@@ -32,7 +32,6 @@ set -e
 ## initialize some environment variables
 export LANG=C LANGUAGE=C LC_ALL=C
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
-
 TLPATH=${TLPATH:-}
 if [ -z "${TLPATH}" ]; then
     TLPATH=$(
@@ -40,7 +39,7 @@ if [ -z "${TLPATH}" ]; then
             for ii in /Applications/TeXLive/Library/texlive/ /usr/local/texlive/ ; do
                 [ -d "${ii}" ] && echo $ii
             done | head -1 | while read ff ; do
-                find "${ff}" -maxdepth 3 -type d -name "x86_64-darwin"
+                find "${ff}" -maxdepth 3 -type d -name "x86_64-darwin" -o -name "universal-darwin"
             done | grep -e '/20[0-9][0-9][a-z]*/bin/' | sort | tail -1
         )
           )
