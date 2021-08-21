@@ -12,8 +12,6 @@ hdiutil_encopts=-format UDZO -imagekey zlib-level=9
 
 all: clean
 	make app
-	make sign
-	make dmg
 
 app: clean ${BIBUNSHOAPP}
 
