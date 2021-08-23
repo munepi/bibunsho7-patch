@@ -39,7 +39,21 @@ Happy TeXing!
 
  * [［改訂第7版］LaTeX2e美文書作成入門 ヒラギノフォントパッチ](https://qiita.com/munepi/items/c4274da0646b3e785c7f) via [Qiita](https://qiita.com/)
 
-なお、本ページをWebブラウザで開きますと、パット見の解説量に対してWebブラウザ内のスクロールバーがやたらめったら余裕がありますので、どうかお察しください☃
+なお、本ページをWebブラウザで開きますと、一見の文章量に対してWebブラウザ内のスクロールバーがやたらめったら余裕がありますので、どうかお察しください☃
+
+## コマンドラインに慣れている方
+
+``` shell
+$ git clone --recursive https://github.com/munepi/bibunsho7-patch.git
+$ cd bibunsho7-patch/
+
+（必要に応じて、該当バージョンをcheckout： git checkout vX.Y）
+
+$ sudo ./Patch.sh
+```
+
+なお、`Patch.app`は、本アプリの仕様上、OS X 10.10 (Yosemite)以降でしか動作しません。
+一方、直接、コマンドラインから、`Patch.sh` を実行すると、OS X 10.10 (Yosemite)未満でも動作するはずです。
 
 
 ## キーワード
