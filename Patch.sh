@@ -2,7 +2,7 @@
 
 # This program is licensed under the terms of the MIT License.
 #
-# Copyright 2018-2021 Munehiro Yamamoto <munepixyz@gmail.com>
+# Copyright 2017-2021 Munehiro Yamamoto <munepixyz@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
