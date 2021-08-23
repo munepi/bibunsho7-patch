@@ -29,15 +29,10 @@ ${BIBUNSHOAPP}:
 	## copy some documents as plain text files
 	cp -a README.md ${BIBUNSHOROOT}/README.txt
 
-sign: ${BIBUNSHOAPP}
-	./codesign.sh ${BIBUNSHOROOT}
-
 dmg: ${BIBUNSHOAPP}
 	hdiutil create -ov -srcfolder ${BIBUNSHOROOT} \
             -fs HFS+ ${hdiutil_encopts} \
             -volname "Bibunsho7-patch" ${BIBUNSHOPKG}.dmg
-	shasum ${BIBUNSHOPKG}.dmg >${BIBUNSHOPKG}.dmg.sha1sum
-	shasum -a 256 ${BIBUNSHOPKG}.dmg >${BIBUNSHOPKG}.dmg.sha256sum
 
 clean:
 	rm -f *~
