@@ -39,7 +39,7 @@ if [ -z "${TLPATH}" ]; then
             for ii in /Applications/TeXLive/Library/texlive/ /usr/local/texlive/ ; do
                 [ -d "${ii}" ] && echo $ii
             done | head -1 | while read ff ; do
-                find "${ff}" -maxdepth 3 -type d -name "x86_64-darwin" -o -name "universal-darwin"
+                find "${ff}" -maxdepth 3 -type d -name "*-darwin"
             done | grep -e '/20[0-9][0-9][a-z]*/bin/' | sort | tail -1
         )
           )
