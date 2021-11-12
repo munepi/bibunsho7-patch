@@ -1,6 +1,6 @@
-[submodule "jfontmaps"]
-	path = jfontmaps
-	url = https://github.com/texjporg/jfontmaps
 [submodule "cjk-gs-support"]
 	path = cjk-gs-support
 	url = https://github.com/texjporg/cjk-gs-support
+[submodule "ptex-fontmaps"]
+	path = ptex-fontmaps
+	url = https://github.com/texjporg/ptex-fontmaps.git
