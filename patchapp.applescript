@@ -48,12 +48,20 @@ try
         set progress completed steps to i
 
         --
-        if progrMsg = "+ exit" then
+        if progrMsg = "+ exit 0" then
             exit repeat
         else if progrMsg = "+ exit 1" then
             error number -128
         end if
     end repeat
+    if progrMsg = "+ exit 0" then
+    else if progrMsg = "cp: /Volumes/Bibunsho7-patch/ptex-fontmaps/maps/hiragino*: No such file or directory"
+        error number -2
+    else if progrMsg = "cjk-gs-integrate [DEBUG]: overwriting with the new one ..." then
+        error number -1
+    else
+        error number -128
+    end if
     -- quit
     set progress completed steps to n
     set progress additional description to "完了"
@@ -61,10 +69,19 @@ try
     display alert "完了"
     return
 
-on error
-    set progrMsg to do shell script "tail -n 2" & space & patchLog & space & "| fold"
+on error message number errn
     set progress additional description to progrMsg
-
     activate
-    display alert "失敗：ログファイル" & space & patchLog & space & "をご確認ください。"
+
+    set plzChkLog to "失敗：ログファイル" & space & patchLog & space & "をご確認ください。"
+
+    if errn = -2 then
+        display alert plzChkLog & "複数個の Bibunsho7-patch-<バージョン>.dmg を開いています。"
+    else if errn = -1 then
+        display alert plzChkLog & "ターミナルで直接、 sudo " & quoted form of (POSIX path of (path to resource "Patch.sh")) & " を実行すると、成功するかもしれません。"
+    else
+        set progrMsg to do shell script "tail -n 2" & space & patchLog & space & "| fold"
+        set progress additional description to progrMsg
+        display alert plzChkLog
+    end if
 end try
