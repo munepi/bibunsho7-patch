@@ -20,7 +20,7 @@ ${BIBUNSHOAPP}:
 	osacompile -o ${BIBUNSHOAPP} patchapp.applescript
 
 	cp -a Patch.sh ${BIBUNSHOAPP}/Contents/Resources/
-	cp -a jfontmaps ${BIBUNSHOAPP}/Contents/Resources/
+	cp -a ptex-fontmaps ${BIBUNSHOAPP}/Contents/Resources/
 	cp -a cjk-gs-support ${BIBUNSHOAPP}/Contents/Resources/
 
 	## replace icns file to ad-hoc our icon :D

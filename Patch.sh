@@ -108,7 +108,7 @@ EOF
 ##  - ptex-fontmaps/hiragino-elcapitan{,-pron}
 HRGNMAPDIR=$(kpsewhich -var-value=TEXMFLOCAL)/fonts/map/dvipdfmx/ptex-fontmaps
 mkdir -p ${HRGNMAPDIR}/
-cp -a ${TLRESDIR}/jfontmaps/maps/hiragino* ${HRGNMAPDIR}/
+cp -a ${TLRESDIR}/ptex-fontmaps/maps/hiragino* ${HRGNMAPDIR}/
 
 ## modified/imported a part of lnsysfnt.sh
 ## https://gist.github.com/munepi/396ef67e3ad051663399
