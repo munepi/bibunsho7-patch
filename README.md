@@ -3,16 +3,22 @@ Bibunsho7-patch/Patch.app: ［改訂第7版］LaTeX2e美文書作成入門 ヒ�
 
 「新しいmacOSへアップグレードしてから、 `(u)platex+dvipdfmx` でヒラギノフォントを埋め込めなくなって困っています :cry: 」という方向けのアプリです！
 
+## 重要
+
+TeX Live 2020以降、標準で `(u)platex+dvipdfmx` でタイプセットしたときに埋め込まれる日本語フォントが[原ノ味フォント](https://github.com/trueroad/HaranoAjiFonts)になりました。
+TeX Live 2020以降を標準でインストールした直後から、多ウェイトで原ノ味明朝、ゴシックが利用可能になっています。
+
+
 ## 概要
 
  * [［改訂第7版］LaTeX2e美文書作成入門](http://gihyo.jp/book/2017/978-4-7741-8705-1)の付録DVD-ROM内のMac OS X用インストーラーから、
-   TeX Live 2016（第1刷）またはTeX Live 2017（第2刷）をデフォルト（`/Applications/TeXLive/Library/texlive/YYYY/`）でインストールした方
+   TeX Live 2016（第1刷）またはTeX Live 2017（第2刷）をデフォルト（`/Applications/TeXLive/Library/texlive/{2016,2017}/`）でインストールした方
  * （［こ㊙こ㊙だ㊙けのナイショ話、］[M㊙cTeX](http://www.tug.org/mactex/)とそのお仲間である[B㊙sicTeX](http://www.tug.org/mactex/morepackages.html)から、
    TeX Live YYYYをデフォルト（`/usr/local/texlive/YYYY{,basic}/`）でインストールした方）
 
 のうち、
 
- * 手元のMac OSバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.14 (Mojave), macOS 10.15 (Catalina), macOS 11 (Bug Sur)にアップグレードした方。
+ * 手元のMac OSバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.14 (Mojave), macOS 10.15 (Catalina), macOS 11 (Big Sur), macOS 12 (Monterey)にアップグレードした方。
  * 上記のMac OSバージョンをアップグレード後、`(u)platex+dvipdfmx` でMac OSに同梱されているヒラギノフォントを埋め込めずに、どうすればよいか分からない方。
  * TeX Liveのディレクトリ構成に関して、全く分からない方。
  * ターミナル.appなどのコマンドライン操作が苦手な方。
