@@ -22,8 +22,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-set n to 330 -- 308 /tmp/bibunsho7-patch.log
-set progress total steps to n
+-- 700 lines /tmp/bibunsho7-patch.log => 3.5min
+set progressTimeout to 5 -- minutes
+set progressMaxN to (progressTimeout * 60 * 10)
+set progress total steps to progressMaxN
 set progress description to "Patch.app: 実行中..."
 set progress additional description to "待機中..."
 
@@ -37,15 +39,20 @@ try
     -- activate the progress bar intentionally
     activate
 
-    repeat with i from 1 to n
+    repeat with i from 1 to progressMaxN
         delay 0.1
-
         -- update progress description and completed steps
         set progrMsg to do shell script "tail -n 1" & space & patchLog & space & "| fold"
         set progress additional description to progrMsg
         set i to do shell script "wc -l" & space & patchLog & space & "| sed \"s, *,,\" | cut -f1 -d \" \""
 
-        set progress completed steps to i
+        set progress completed steps to (i * progressTimeout)
+
+        if progrMsg = "cjk-gs-integrate [DEBUG]: overwriting with the new one ..."
+            set progress description to "Patch.app: 実行中... (この処理にしばらく時間がかかる場合があります)"
+        else
+            set progress description to "Patch.app: 実行中..."
+        end if
 
         --
         if progrMsg = "+ exit 0" then
@@ -54,16 +61,16 @@ try
             error number -128
         end if
     end repeat
+    -- some exception handling
     if progrMsg = "+ exit 0" then
     else if progrMsg = "cp: /Volumes/Bibunsho7-patch/ptex-fontmaps/maps/hiragino*: No such file or directory"
         error number -2
-    else if progrMsg = "cjk-gs-integrate [DEBUG]: overwriting with the new one ..." then
-        error number -1
     else
         error number -128
     end if
+
     -- quit
-    set progress completed steps to n
+    set progress completed steps to progressMaxN
     set progress additional description to "完了"
     activate
     display alert "完了"
@@ -77,8 +84,6 @@ on error message number errn
 
     if errn = -2 then
         display alert plzChkLog & "複数個の Bibunsho7-patch-<バージョン>.dmg を開いています。"
-    else if errn = -1 then
-        display alert plzChkLog & "ターミナルで直接、 sudo " & quoted form of (POSIX path of (path to resource "Patch.sh")) & " を実行すると、成功するかもしれません。"
     else
         set progrMsg to do shell script "tail -n 2" & space & patchLog & space & "| fold"
         set progress additional description to progrMsg
