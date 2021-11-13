@@ -52,7 +52,7 @@ fi
 export PATH=${TLPATH}:${PATH}
 
 ## get app's Resources directory
-TLRESDIR=$(cd $(dirname $0); pwd)
+TLRESDIR=$(cd $(dirname "$0"); pwd)
 
 ## flag to set up OS-bundled Hiragino fonts with Resources/cjk-gs-support
 with_cjkgssupport=${with_cjkgssupport:-1} ## default: 1 (true)
@@ -260,5 +260,5 @@ updmap-sys
 ## TODO: remove mpost, upmpost from texmf.cnf in TLROOT
 
 echo Finished
-exit
+exit 0
 ## end of file
