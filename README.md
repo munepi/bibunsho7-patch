@@ -18,7 +18,7 @@ TeX Live 2020以降を標準でインストールした直後から、多ウェ�
 
 のうち、
 
- * 手元のMac OSバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.14 (Mojave), macOS 10.15 (Catalina), macOS 11 (Big Sur), macOS 12 (Monterey)にアップグレードした方。
+ * 手元のMac OSバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.14 (Mojave), macOS 10.15 (Catalina), macOS 11 (Big Sur), macOS 12 (Monterey), macOS 13 (Ventura)にアップグレードした方。
  * 上記のMac OSバージョンをアップグレード後、`(u)platex+dvipdfmx` でMac OSに同梱されているヒラギノフォントを埋め込めずに、どうすればよいか分からない方。
  * TeX Liveのディレクトリ構成に関して、全く分からない方。
  * ターミナル.appなどのコマンドライン操作が苦手な方。
