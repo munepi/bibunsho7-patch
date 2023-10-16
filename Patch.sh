@@ -242,7 +242,7 @@ case ${OSXVERSION} in
         kanjiEmbed=hiragino-pron;;
     10.1[12])
         kanjiEmbed=hiragino-elcapitan-pron;;
-    10.1[3-6]|1[1-3].[0-9])
+    10.1[3-6]|1[1-9].[0-9])
         kanjiEmbed=hiragino-highsierra-pron;;
     *)
         echo E: not supported: ${OSXVERSION}
