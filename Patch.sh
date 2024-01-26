@@ -161,7 +161,7 @@ lnsysfnt(){
             ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc" HiraginoSans-W7.ttc
             ln -s "/System/Library/Fonts/ヒラギノ角ゴシック W9.ttc" HiraginoSans-W9.ttc
             ;;
-        10.1[3-6]|1[1-3].[0-9])
+        10.1[3-6]|1[1-4].[0-9])
             ## bundled Hiragino OpenType fonts/collections (OS X 10.13 High Sierra)
             ln -s "/System/Library/Fonts/ヒラギノ明朝 ProN.ttc"     HiraginoSerif.ttc
             ln -s "/System/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc"  HiraginoSansR-W4.ttc
@@ -199,7 +199,7 @@ cjkgsintg(){
             cjkgsExtDB=elcapitan;;
         10.12)
             cjkgsExtDB=sierra;;
-        10.1[3-6]|1[1-3].[0-9])
+        10.1[3-6]|1[1-4].[0-9])
             cjkgsExtDB=highsierra;;
         *)
             echo E: not supported: ${OSXVERSION}
