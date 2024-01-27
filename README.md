@@ -20,7 +20,7 @@ TeX Live 2020以降を標準でインストールした直後から、多ウェ�
 
  * 手元のMac OSバージョンをOS X 10.11 (El Capitan), macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.14 (Mojave), macOS 10.15 (Catalina), macOS 11 (Big Sur), macOS 12 (Monterey), macOS 13 (Ventura), macOS 14 (Sonoma)にアップグレードした方。
  * 上記のMac OSバージョンをアップグレード後、`(u)platex+dvipdfmx` でMac OSに同梱されているヒラギノフォントを埋め込めずに、どうすればよいか分からない方。
- * TeX Liveのディレクトリ構成に関して、全く分からない方。
+ * TeX Liveのディレクトリ構成に関して、まったく分からない方。
  * ターミナル.appなどのコマンドライン操作が苦手な方。
 
 上記に該当する方で、同書籍の付録DVD-ROMからインストールされるTeX Live環境を引き続き利用しつつ、
@@ -59,7 +59,7 @@ $ sudo ./Patch.sh
 ```
 
 なお、`Patch.app`は、本アプリの仕様上、OS X 10.10 (Yosemite)以降でしか動作しません。
-一方、直接、コマンドラインから、`Patch.sh` を実行すると、OS X 10.10 (Yosemite)未満でも動作するはずです。
+一方、`Patch.sh`は、コマンドラインから直接実行すると、OS X 10.10 (Yosemite)未満でも動作するはずです。
 
 
 ## キーワード
